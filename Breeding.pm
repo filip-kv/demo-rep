@@ -506,6 +506,7 @@ sub ImportBreedingAuth {
     my $marc_type = shift || C4::Context->preference('marcflavour');
 
     my $controlnumber = $marcrecord->field('001')->data;
+    my $controlnumber2 = $marcrecord->field('099')->data;
 
     # Normalize the record so it doesn't have separated diacritics
     SetUTF8Flag($marcrecord);

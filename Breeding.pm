@@ -502,7 +502,8 @@ sub ImportBreedingAuth {
     my $batch_id = GetZ3950BatchId($filename);
     my $searchbreeding = $dbh->prepare("select import_record_id from import_auths where control_number=? and authorized_heading=?");
     # Filippos Kolovos -- get the marcflavour for using it below in the DB update
-    my $marc_type = C4::Context->preference('marcflavour');
+    # It does need the shift keyword, so it has been reinserted
+    my $marc_type = shift || C4::Context->preference('marcflavour');
 
     my $controlnumber = $marcrecord->field('001')->data;
 

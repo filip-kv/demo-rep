@@ -508,6 +508,7 @@ sub ImportBreedingAuth {
     my $controlnumber = $marcrecord->field('001')->data;
 
     # Normalize the record so it doesn't have separated diacritics
+    SetEngFlag($marc_type);
     SetUTF8Flag($marcrecord);
 
     $searchbreeding->execute($controlnumber,$heading);
